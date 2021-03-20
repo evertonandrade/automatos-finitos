@@ -1,21 +1,22 @@
 from automato import afd
 
+Q = set(input("Quais são os estados do autômato? ").split(' '))
+Sigma = set(input("Qual o alfabeto do autômato? ").split(' '))
 
-# transições
-delta = {
-    ('q0', '0'): 'q0', ('q0', '1'): 'q1',
-    ('q1', '0'): 'q2', ('q1', '1'): 'q1',
-    ('q2', '0'): 'q1', ('q2', '1'): 'q1'
-}
+delta = dict()
+for q in list(Q):
+    for e in list(Sigma):
+        delta[(q, e)] = input(f'Estando em {q} e lendo {e} vai para? ')
 
-# conjunto de estados
-Q = ['q0', 'q1', 'q2']
+print(delta)
 
-# conjunto de estados finais
-F = ['q1']
+q0 = input('qual o estado inicial? ')
+F = input("Quais são os estados finais? ").split(' ')
+if set(F).issubset(Q):
+    print('Ok')
+else:
+    print('Erro')
 
-# alfabeto
-Sigma = ['0', '1']
 
 cadeia = input("Informe a Cadeia: ")
 
