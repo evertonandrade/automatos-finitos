@@ -1,17 +1,25 @@
 from automato import afd
 
-Q = set(input("Quais são os estados do autômato? ").split(' '))
-Sigma = set(input("Qual o alfabeto do autômato? ").split(' '))
+
+def subdividir_lista(lista, n):
+    lista_subdivida = []
+    for i in range(0, len(lista), n):
+        lista_subdivida.append(lista[i:i + n])
+    return lista_subdivida
+
+
+Q = input("Quais são os estados do autômato? ").split(' ')
+Sigma = input("Qual o alfabeto do autômato? ").split(' ')
 
 delta = dict()
-data = []
 for q in list(Q):
-    linha = []
     for e in list(Sigma):
-        valor = input(f'Estando em {q} e lendo {e} vai para? ')
-        delta[(q, e)] = valor
-        linha.append(valor)
-    data.append(linha)
+        delta[(q, e)] = input(f'Estando em {q} e lendo {e} vai para? ')
+
+
+dados = subdividir_lista(list(delta.values()), len(Sigma))
+
+print(dados)
 
 
 def print_table(linhas, colunas, dados):
@@ -22,7 +30,7 @@ def print_table(linhas, colunas, dados):
         print(format_row.format(f' {team} |', *row))
 
 
-print_table(Q, Sigma, data)
+print_table(Q, Sigma, dados)
 
 q0 = input('qual o estado inicial? ')
 F = input("Quais são os estados finais? ").split(' ')

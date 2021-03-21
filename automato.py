@@ -13,11 +13,45 @@ def afd(Q, Sigma, delta, q0, F, cadeia):
         (bool): A cadeia é reconhecida pelo automato
     """
 
-
-
     qA = q0
     for s in cadeia:
         qA = delta[(qA, s)]
     return qA in F
 
-    
+
+# função que devolve o Epsilon-fechamento de um conjunto de estados
+def E(estados, delta):
+    S = set(estados)
+    nao_explorados = list(estados)
+    while len(nao_explorados) > 0:
+        q = nao_explorados.pop()
+        if (q, 'epsilon') in delta:
+            novos = delta[(q, 'epsilon')].difference(S)
+            S.update(novos)
+            nao_explorados.extend(novos)
+    return S
+
+
+def afn(Q, Sigma, delta, q0, F, cadeia):
+    QA = E({q0}, delta)
+    for s in cadeia:
+        novos = set()
+        for q in QA:
+            if (q, s) in delta:
+                novos.update(E(delta[(q, s)], delta))
+        QA = novos
+    return len(QA.intersection(F)) != 0
+
+
+delta = {
+    ('q1', '0'): {'q1'},
+    ('q1', '1'): {'q1', 'q2'},
+    ('q2', '0'): {'q3'},
+    ('q2', '1'): {'q3'},
+    ('q3', '0'): {'q4'},
+    ('q3', '1'): {'q4'},
+}
+
+a = afn(['q1', 'q2', 'q3', 'q4'], ['0', '1'],
+        delta, 'q1', {'q4'}, '0101010101111011')
+print(a)
