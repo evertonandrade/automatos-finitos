@@ -1,6 +1,6 @@
-from automato import afd
+from automato import afd, afn
 
-
+'''
 def subdividir_lista(lista, n):
     lista_subdivida = []
     for i in range(0, len(lista), n):
@@ -44,3 +44,17 @@ cadeia = input("Informe a Cadeia: ")
 
 print("A cadeia foi aceita? ", end='')
 print(afd(Q, Sigma, delta, 'q0', F, cadeia))
+'''
+
+delta = {
+    ('q1', '0'): {'q1'},
+    ('q1', '1'): {'q1', 'q2'},
+    ('q2', '0'): {'q3'},
+    ('q2', '1'): {'q3'},
+    ('q3', '0'): {'q4'},
+    ('q3', '1'): {'q4'},
+}
+
+a = afn(['q1', 'q2', 'q3', 'q4'], ['0', '1'],
+        delta, 'q1', {'q4'}, '01010101011110111')
+print(a)
