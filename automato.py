@@ -1,4 +1,4 @@
-from utils import *
+from utils import print_table, subdividir_lista
 
 
 class Automato:
@@ -35,6 +35,7 @@ class Automato:
                 'O conjunto de estados finais deve ser subconjunto dos estados do autômato'
             )
 
+    @property
     def tipo(self):
         estados = self.delta.values()
         for e in estados:
@@ -56,16 +57,39 @@ class Automato:
             qA = ''.join(proximo_estado)
         return qA in self._F
 
+    # função que devolve o Epsilon-fechamento de um conjunto de estados
+    def e_fechamento(self, estados, delta):
+        S = set(estados)
+        nao_explorados = list(estados)
+        while len(nao_explorados) > 0:
+            q = nao_explorados.pop()
+            if (q, 'epsilon') in delta:
+                novos = delta[(q, 'epsilon')].difference(S)
+                S.update(novos)
+                nao_explorados.extend(novos)
+        return S
+
+    def afn(self, cadeia):
+        QA = self.e_fechamento({self._q0}, self.delta)
+        for s in cadeia:
+            novos = set()
+            for q in QA:
+                if (q, s) in self.delta:
+                    novos.update(self.e_fechamento(
+                        self.delta[(q, s)], self.delta))
+            QA = novos
+        return len(QA.intersection(self._F)) != 0
+
     def testar(self, cadeia):
 
         self.cadeia_valida(cadeia)
-        if self.tipo() == 'AFD':
+        if self.tipo == 'AFD':
             return self.afd(cadeia)
         elif self.tipo == 'AFN':
-            ...
+            return self.afn(cadeia)
 
     def __str__(self):
         dados = subdividir_lista(list(self.delta.values()), len(self.Sigma))
         print()
         print_table(self.Q, self.Sigma, dados)
-        return f'Tabela de transições do {self.tipo()} \n'
+        return f'Tabela de transições do {self.tipo} \n'

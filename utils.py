@@ -19,3 +19,5 @@ def print_table(linhas, colunas, dados):
     print(format_row.format("----+", *['-----' for e in colunas]))
     for linha, dados_linha in zip(linhas, dados):
         print(format_row.format(f' {linha} |', *dados_linha))
+    print(format_row.format("-----", *['-----' for e in colunas]))
+
