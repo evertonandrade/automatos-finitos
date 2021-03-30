@@ -81,15 +81,19 @@ class Automato:
         return len(QA.intersection(self._F)) != 0
 
     def testar(self, cadeia):
-
         self.cadeia_valida(cadeia)
+
         if self.tipo == 'AFD':
             return self.afd(cadeia)
         elif self.tipo == 'AFN':
             return self.afn(cadeia)
 
     def __str__(self):
-        dados = subdividir_lista(list(self.delta.values()), len(self.Sigma))
-        print()
-        print_table(self.Q, self.Sigma, dados)
+        try:
+            dados = subdividir_lista(
+                list(self.delta.values()), len(self.Sigma))
+            print_table(self.Q, self.Sigma, dados)
+        except ValueError as error:
+            print(f'Ops! Ocorreu um erro. {error}')
+
         return f'Tabela de transições do {self.tipo} \n'

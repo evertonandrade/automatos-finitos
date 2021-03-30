@@ -1,10 +1,11 @@
 from automato import Automato
+from colorama import Fore, Style
 
 
 meu_automato = Automato()
-meu_automato.Q = input("Quais são os estados do autômato? ").split(' ')
-meu_automato.Sigma = input("Qual o alfabeto do autômato? ").split(' ')
-
+meu_automato.Q = input(f'Quais são os estados do autômato? ').split(' ')
+meu_automato.Sigma = input(f'\nQual o alfabeto do autômato? ').split(' ')
+print()
 for q in meu_automato.Q:
     for e in meu_automato.Sigma:
         estado = input(f'Estando em {q} e lendo {e} vai para? ').split(' ')
@@ -12,13 +13,16 @@ for q in meu_automato.Q:
 
 print(meu_automato)
 
-meu_automato.q0 = input('qual o estado inicial? ')
-meu_automato.F = set(input("Quais são os estados finais? ").split(' '))
+meu_automato.q0 = input(f'Qual o estado inicial? ')
+meu_automato.F = set(input(f'\nQuais são os estados finais? ').split(' '))
 
-cadeia = input("Informe a Cadeia: ")
-
-aceita = meu_automato.testar(cadeia)
-if aceita:
-    print('A cadeia foi aceita :)')
-else:
-    print('A cadeia não foi aceita :(')
+while(True):
+    cadeia = input(f'\n{Style.RESET_ALL}Informe a Cadeia: ')
+    if cadeia == '':
+        print('saindo...')
+        break
+    aceita = meu_automato.testar(cadeia)
+    if aceita:
+        print(f'{Fore.GREEN}A cadeia foi aceita')
+    else:
+        print(f'{Fore.RED}A cadeia foi rejeitada')
