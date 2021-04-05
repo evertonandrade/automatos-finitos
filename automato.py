@@ -11,7 +11,7 @@ class Automato:
 
     @property
     def q0(self):
-        return self.q0
+        return self._q0
 
     @q0.setter
     def q0(self, value):

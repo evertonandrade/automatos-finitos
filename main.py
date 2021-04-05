@@ -17,12 +17,12 @@ meu_automato.q0 = input(f'Qual o estado inicial? ')
 meu_automato.F = set(input(f'\nQuais são os estados finais? ').split(' '))
 
 while(True):
-    cadeia = input(f'\n{Style.RESET_ALL}Informe a Cadeia: ')
+    cadeia = input(f'\nDigite a Cadeia (p/ sair pressione apenas ENTER): ')
     if cadeia == '':
-        print('saindo...')
+        print('\nsaindo...')
         break
     aceita = meu_automato.testar(cadeia)
     if aceita:
-        print(f'{Fore.GREEN}A cadeia foi aceita')
+        print(f'{Fore.GREEN}A cadeia foi aceita{Style.RESET_ALL}')
     else:
-        print(f'{Fore.RED}A cadeia foi rejeitada')
+        print(f'{Fore.RED}A cadeia foi rejeitada{Style.RESET_ALL}')
