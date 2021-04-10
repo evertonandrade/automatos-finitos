@@ -142,3 +142,8 @@ Digite a Cadeia (p/ sair pressione apenas ENTER):
 
 saindo...
 ```
+---
+
+<p align="center">
+Made with ♥ by <a href="http://everton.github.io">Everton</a>
+</p>
