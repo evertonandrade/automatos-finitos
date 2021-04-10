@@ -1,10 +1,33 @@
 # Implementação de Automatos Finitos
-Implementação de Autômatos
+ Essa é uma implementação de autômato finito determinístico, de autômato finito não-determinístico e não-determinístico com transição vazia.
+
+## Como rodar?
+É preciso ter o [python 3](https://www.python.org/downloads/) instalado na sua máquina. (sugiro ter uma versão atualizada).  
+
+### Para executar o programa
+
+Primeiramente, clone o repositório e acesse o diretório:
+```bash
+$ git clone https://github.com/evertonandrade/automatos-finitos.git
+$ cd automatos-finitos
+```
+
+Execute com:
+```bash
+$ python main.py
+```
+
+### Instruções do programa
+- Digite os estados separando-os por 1 espaço.
+- O alfabeto da mesma forma separando os simbolos por 1 espaço.
+- Qualquer outro erro gerará uma exceção.
+- A partir do preenchimento da tabela de transição o programa irá verificar automáticamente se é um AFD ou AFN.
+- Após definir todos os 5 componentes do autômato, basta informa uma cadeia para o reconhecimento.****
 
 ### Exemplo de execução do AFD
-AFN sobre Σ = {a, b} que considere  
-    L = { w | w possui **aa** ou **bb** como subpalavra }  
-tal que = ({q0, q1, q2, qf }, Σ, δf, q0, {qf }).  
+> AFN sobre Σ = {a, b} que considere  
+> L = { w | w possui **aa** ou **bb** como subpalavra }  
+> tal que = ({q0, q1, q2, qf }, Σ, δf, q0, {qf }).  
 
 ```
 ❯ python main.py
@@ -119,3 +142,8 @@ Digite a Cadeia (p/ sair pressione apenas ENTER):
 
 saindo...
 ```
+
+---
+<p align="center">
+Made with ♥ by <a href="http://everton.github.io">Everton</a>
+</p>
