@@ -12,6 +12,11 @@ $ git clone https://github.com/evertonandrade/automatos-finitos.git
 $ cd automatos-finitos
 ```
 
+Instale as dependências
+```bash
+$ pip install -r requirements.txt
+```
+
 Execute com:
 ```bash
 $ python main.py
