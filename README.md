@@ -82,9 +82,9 @@ saindo...
 ```
 
 ### Exemplo de execução do AFN
-AFN sobre Σ = {a, b} que considere  
-    L = { w | w possui **aaa** como sufixo }  
-tal que = ({q0, q1, q2, qf }, Σ, δf, q0, {qf }).
+> AFN sobre Σ = {a, b} que considere  
+> L = { w | w possui **aaa** como sufixo }  
+> tal que = ({q0, q1, q2, qf }, Σ, δf, q0, {qf }).
 
 ``` 
 ❯ python main.py
