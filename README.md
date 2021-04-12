@@ -22,7 +22,7 @@ $ python main.py
 - O alfabeto da mesma forma separando os simbolos por 1 espaço.
 - Qualquer outro erro gerará uma exceção.
 - A partir do preenchimento da tabela de transição o programa irá verificar automáticamente se é um AFD ou AFN.
-- Após definir todos os 5 componentes do autômato, basta informa uma cadeia para o reconhecimento.****
+- Após definir todos os 5 componentes do autômato, basta informa uma cadeia para o reconhecimento.  
 
 ### Exemplo de execução do AFD
 > AFN sobre Σ = {a, b} que considere  
@@ -142,8 +142,8 @@ Digite a Cadeia (p/ sair pressione apenas ENTER):
 
 saindo...
 ```
-
 ---
+
 <p align="center">
 Made with ♥ by <a href="http://everton.github.io">Everton</a>
 </p>
