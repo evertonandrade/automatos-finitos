@@ -39,7 +39,7 @@ class Automato:
     def tipo(self):
         estados = self.delta.values()
         for e in estados:
-            if len(e) > 1:
+            if len(e) > 1 or 'epsilon' in self.Sigma:
                 return 'AFN'
         return 'AFD'
 
@@ -70,6 +70,7 @@ class Automato:
         return S
 
     def afn(self, cadeia):
+        # conjunto dos estados ativos
         QA = self.e_fechamento({self._q0}, self.delta)
         for s in cadeia:
             novos = set()
