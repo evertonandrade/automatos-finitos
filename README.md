@@ -20,6 +20,7 @@ $ python main.py
 ### Instruções do programa
 - Digite os estados separando-os por 1 espaço.
 - O alfabeto da mesma forma separando os simbolos por 1 espaço.
+- Para usar a transição vazia especifique `epsilon` como caractere do alfabeto
 - Qualquer outro erro gerará uma exceção.
 - A partir do preenchimento da tabela de transição o programa irá verificar automáticamente se é um AFD ou AFN.
 - Após definir todos os 5 componentes do autômato, basta informa uma cadeia para o reconhecimento.  
@@ -141,6 +142,64 @@ A cadeia foi aceita
 Digite a Cadeia (p/ sair pressione apenas ENTER):     
 
 saindo...
+```
+
+
+### Exemplo de execução do AFN com transição vazia
+> AFN com transição vazia que aceita palavras na forma a* b*  
+
+```
+❯ python main.py
+Quais são os estados do autômato? q0 qf
+
+Qual o alfabeto do autômato? a b epsilon
+
+Estando em q0 e lendo a vai para? q0
+Estando em q0 e lendo b vai para? ø
+Estando em q0 e lendo epsilon vai para? qf
+Estando em qf e lendo a vai para? ø
+Estando em qf e lendo b vai para? qf
+Estando em qf e lendo epsilon vai para? ø
+
+    |   a   b epsilon
+----+---------------
+ q0 |  q0   ø  qf
+ qf |   ø  qf   ø
+--------------------
+Tabela de transições do AFN 
+
+Qual o estado inicial? q0
+
+Quais são os estados finais? qf
+
+Digite a Cadeia (p/ sair pressione apenas ENTER): abab
+A cadeia foi rejeitada
+
+Digite a Cadeia (p/ sair pressione apenas ENTER): ab
+A cadeia foi aceita
+
+Digite a Cadeia (p/ sair pressione apenas ENTER): ba
+A cadeia foi rejeitada
+
+Digite a Cadeia (p/ sair pressione apenas ENTER): aaabbb
+A cadeia foi aceita
+
+Digite a Cadeia (p/ sair pressione apenas ENTER): aaaaabbbb
+A cadeia foi aceita
+
+Digite a Cadeia (p/ sair pressione apenas ENTER): ab
+A cadeia foi aceita
+
+Digite a Cadeia (p/ sair pressione apenas ENTER): a
+A cadeia foi aceita
+
+Digite a Cadeia (p/ sair pressione apenas ENTER): b
+A cadeia foi aceita
+
+Digite a Cadeia (p/ sair pressione apenas ENTER): 
+
+saindo...
+
 ```
 ---
 
